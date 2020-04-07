@@ -72,10 +72,12 @@ public class Main {
 	public static void goUserHomePage() {
 		while(true) {
 			int j = 0;
-			if(!loggedInUser.getUserName().equals(adminUser.getUserName()) && announcments.size() > 0 && !announcments.get(j).isSeen()) {
+			if(!loggedInUser.getUserName().equals(adminUser.getUserName()) && announcments.size() > 0) {
 				System.out.println("You've got new announcments...");
 				for (Announcments announcment : announcments) {
-					System.out.println(announcment.getAnnouncmentTitle());
+					if (!announcments.get(j).isSeen()) {
+						System.out.println(announcment.getAnnouncmentTitle());
+					}
 					j++;
 				}
 			}
@@ -204,7 +206,7 @@ public class Main {
 						System.out.println("Wrong input");
 					}
 				} else {
-					System.out.println("1. Create an announcment.");
+					System.out.println("1. Create an announcment");
 					System.out.println("2. Go Back");
 					int j = scanner.nextInt();
 					if (j == 1) {
